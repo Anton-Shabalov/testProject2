@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "4a8d87d9-f29b-42f2-8396-96133b9469cc",
+		"name": "testProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6643604"
+	},
+	"item": [
+		{
+			"name": "Действия над пользователем",
+			"item": [
+				{
+					"name": "Добавить нового пользователя",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Вася\",\n    \"surname\": \"Васильев\",\n    \"phones\": [\n        {\n            \"number\": \"89053048972\"\n        },\n        {\n            \"number\": \"89053048973\"\n        }\n    ],\n    \"addresses\": [\n        {\n            \"country\": \"Россия\",\n            \"city\": \"Москва\",\n            \"street\": \"Донская\",\n            \"home\": 8,\n            \"apartment\": 21\n        },\n        {\n            \"country\": \"Россия\",\n            \"city\": \"Москва\",\n            \"street\": \"Вернадского\",\n            \"home\": 12,\n            \"apartment\": 12\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/persons",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить данные о пользователе по ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:21232/api/v1/persons/1902",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								"1902"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить данные о всех людях",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:21232/api/v1/persons",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить данные о пользователе",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:21232/api/v1/persons/1903",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								"1903"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновить данные о пользователе",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Дима\",\n    \"surname\": \"Дмитриев\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/persons/1902",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								"1902"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Действия над номерами телефонов",
+			"item": [
+				{
+					"name": "Вывод всех номеров по id пользователя",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/phone-numbers",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"phone-numbers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить новый номер телефона пользователю",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"89053048979\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/phone-numbers",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"phone-numbers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление номера телефона у пользователя",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/phone-numbers/453",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"phone-numbers",
+								"453"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновление номера телефона",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"89053048922\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1952/phone-numbers/502",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1952",
+								"phone-numbers",
+								"502"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Действия над адресами",
+			"item": [
+				{
+					"name": "Вывод всех адресов пользователя",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/addresses",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление адреса у пользователя",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/addresses/552",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"addresses",
+								"552"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение адреса пользователя",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"country\": \"Россия\",\n    \"city\": \"Москва\",\n    \"street\": \"Донская\",\n    \"home\": 8,\n    \"apartment\": 21\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/2203/addresses/905",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"2203",
+								"addresses",
+								"905"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление нового адреса пользователю",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"country\": \"Россия\",\n    \"city\": \"Москва\",\n    \"street\": \"Донская\",\n    \"home\": 8,\n    \"apartment\": 21\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/1902/addresses",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"1902",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Поиск",
+			"item": [
+				{
+					"name": "Поиск по имени",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/find-person/name/Вася",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"find-person",
+								"name",
+								"Вася"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск по фамилии",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/find-person/surname/Васильев",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"find-person",
+								"surname",
+								"Васильев"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск по имени и фамилии",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/find-person/name/Вася/surname/Васильев",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"find-person",
+								"name",
+								"Вася",
+								"surname",
+								"Васильев"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск по номеру телефона",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:21232/api/v1/find-person/number/89053048974",
+							"host": [
+								"localhost"
+							],
+							"port": "21232",
+							"path": [
+								"api",
+								"v1",
+								"find-person",
+								"number",
+								"89053048974"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
