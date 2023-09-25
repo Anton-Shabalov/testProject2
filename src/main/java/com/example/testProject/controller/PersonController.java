@@ -1,13 +1,17 @@
 package com.example.testProject.controller;
 
 import com.example.testProject.dto.PersonDTO;
+import com.example.testProject.entity.Person;
+import com.example.testProject.model.PersonPage;
+import com.example.testProject.model.PersonSeachCriteria;
 import com.example.testProject.service.PersonService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -16,10 +20,16 @@ public class PersonController {
     private final PersonService personService;
 
 
-    @GetMapping()
-    public List<PersonDTO> getAllPerson() {
-        return personService.getAllPerson();
-
+    //    @GetMapping()
+//    public List<PersonDTO> getAllPerson() {
+//        return personService.getAllPerson();
+//
+//    }
+    @GetMapping("")
+    public ResponseEntity<Page<Person>> getAllPersonWithFilters(PersonPage personPage,
+                                                                PersonSeachCriteria personSeachCriteria) {
+        return new ResponseEntity<>(personService.getAllPersonWithFilters(personPage, personSeachCriteria),
+                HttpStatus.OK);
     }
 
     @PostMapping()

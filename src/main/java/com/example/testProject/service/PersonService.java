@@ -5,9 +5,13 @@ import com.example.testProject.dto.PhoneDTO;
 import com.example.testProject.entity.Person;
 import com.example.testProject.exception.CustomEntityNotFoundException;
 import com.example.testProject.exception.PhoneAlreadyExistsException;
+import com.example.testProject.model.PersonPage;
+import com.example.testProject.model.PersonSeachCriteria;
+import com.example.testProject.repository.PersonCriteriaRepository;
 import com.example.testProject.repository.PersonRepository;
 import com.example.testProject.util.ModelMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +23,7 @@ public class PersonService {
     private final PersonRepository personRepository;
     private final ModelMapper modelMapper;
     private final PhoneService phoneService;
+    private final PersonCriteriaRepository personCriteriaRepository;
 
     public PersonDTO getPerson(Long personId) {
         Optional<Person> optionalPerson = personRepository.findById(personId);
@@ -27,8 +32,13 @@ public class PersonService {
                 .orElseThrow(() -> new CustomEntityNotFoundException(personId, Person.class.getName()));
     }
 
-    public List<PersonDTO> getAllPerson() {
-        return personRepository.findAll().stream().map(modelMapper::convertPersonToPersonDTO).toList();
+//    public List<PersonDTO> getAllPerson() {
+//        return personRepository.findAll().stream().map(modelMapper::convertPersonToPersonDTO).toList();
+//    }
+
+    public Page<Person> getAllPersonWithFilters(PersonPage personPage,
+                                                PersonSeachCriteria personSeachCriteria) {
+        return personCriteriaRepository.findAllWithFilters(personPage, personSeachCriteria);
     }
 
     public void deletePerson(Long personId) {
