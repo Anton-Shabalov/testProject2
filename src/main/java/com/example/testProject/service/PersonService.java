@@ -1,6 +1,7 @@
 package com.example.testProject.service;
 
 import com.example.testProject.dto.PersonDTO;
+import com.example.testProject.dto.PhoneDTO;
 import com.example.testProject.entity.Person;
 import com.example.testProject.exception.CustomEntityNotFoundException;
 import com.example.testProject.exception.PhoneAlreadyExistsException;
@@ -27,7 +28,7 @@ public class PersonService {
     }
 
     public List<PersonDTO> getAllPerson() {
-        return personRepository.findAll().stream().map(modelMapper::convertPersonToPersonDtoWithInnerObject).toList();
+        return personRepository.findAll().stream().map(modelMapper::convertPersonToPersonDTO).toList();
     }
 
     public void deletePerson(Long personId) {
@@ -35,7 +36,7 @@ public class PersonService {
     }
 
     public void addPerson(PersonDTO personDTO) {
-        List<String> busyPhone = personDTO.getPhones().stream().filter(phoneService::checkExistPhones).map(x -> x.getNumber()).toList();
+        List<String> busyPhone = personDTO.getPhones().stream().filter(phoneService::checkExistPhones).map(PhoneDTO::getNumber).toList();
         if (busyPhone.isEmpty()) {
             personRepository.save(modelMapper.convertPersonDtoToPersonWithInnerObject(personDTO));
         } else {

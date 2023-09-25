@@ -39,6 +39,9 @@ public class ModelMapper {
 
     }
 
+    public PersonDTO convertPersonToPersonDTO(Person person) {
+        return modelMapper.map(person, PersonDTO.class);
+    }
     public Person convertPersonDtoToPerson(PersonDTO personDTO) {
         return modelMapper.map(personDTO, Person.class);
     }
